@@ -30,7 +30,8 @@ export default class Book extends Component {
             </div>
           </div>
           <div className="book-title">{book.title}</div>
-          <div className="book-authors">{book.authors && book.authors[0]}</div>{/*in case book.authors is undefined which I found one case*/}
+          {/*<div className="book-authors">{book.authors && book.authors[0]</div>*/} {/*works! in case book.authors is undefined which I found one case*/}
+          <div className="book-authors">{book.authors ? book.authors.join(', '): ''}</div> {/*Better way, also shows all authors, instead of just showing the 1st author*/}
         </div>
       </li>
     )

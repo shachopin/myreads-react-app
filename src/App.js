@@ -14,22 +14,21 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then(books => this.setState({books}))
   }
 
+  //refractored version using ternary operator
   handleUpdateBook = (currentBook, newShelf) => {
     this.setState(prevState => {
+      
       let selectedBook = prevState.books.find(book => book.id === currentBook.id)
-      if (selectedBook) {
-        let changedBook =  Object.assign({}, selectedBook) //deep copy
-        changedBook.shelf = newShelf
-        return {
-          books: prevState.books.filter(book => book.id !== currentBook.id).concat(changedBook)
-        }    
-      } else {
-        currentBook.shelf = newShelf;
-        this.setState(prevState => {
-          return {
-            books: prevState.books.concat(currentBook)
-          }
-        });
+      let changedBook
+      return {  //javascript ternary operators with multiple statements - https://stackoverflow.com/questions/6678411/javascript-ternary-operator-with-multiple-statements
+        books: selectedBook ? (
+                 changedBook = Object.assign({}, selectedBook), //deep copy, because we should never mutate the state
+                 changedBook.shelf = newShelf,
+                 prevState.books.filter(book => book.id !== currentBook.id).concat(changedBook) //only the last statment got evaluated to expression
+               ) : (
+                 currentBook.shelf = newShelf,
+                 prevState.books.concat(currentBook)
+               )
       }
     });
     
