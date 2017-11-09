@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Book from './Book'
+import BookShelf from './BookShelf'
 
 export default class ListBooks extends Component{
   showBookList(category) {
@@ -19,35 +20,14 @@ export default class ListBooks extends Component{
         </div>
         <div className="list-books-content">
           <div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Currently Reading</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  {this.showBookList("currentlyReading")}   
-                </ol>
-              </div>
-            </div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Want to Read</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  {this.showBookList("wantToRead")} 
-                </ol>
-              </div>
-            </div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Read</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  {this.showBookList("read")} 
-                </ol>
-                </div>
-              </div>
-            </div>
+            <BookShelf title="Current Reading" bookList={this.showBookList("currentlyReading")} /> {/*more DRY*/}
+            <BookShelf title="Want to Read" bookList={this.showBookList("wantToRead")} />
+            <BookShelf title="Read" bookList={this.showBookList("read")} />
           </div>
           <div className="open-search">
             <Link to="/search">Add a book</Link>
           </div>
+        </div>
       </div>
     )
   } 
