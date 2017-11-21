@@ -91,3 +91,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+##
+It’s recommended to write your own README.md file for each application you build, rather than copying the content from the parent repository.
+
+Instead, you can add a link to the parent repository :squirrel:
+
+Make sure to add installation and usage instructions within your README.md file to meet this requirement.
+
+You may want to include contribution, licensing, and usage information.
+
+You should also consider adding the allowed search terms here as well.
+
+Want to learn more on how to write great README.md files? Have a look at our course on the subject here: https://www.udacity.com/course/writing-readmes--ud777
